@@ -9,15 +9,25 @@ class NewsDsl {
         content.append("${block()}\n")
     }
 
-    fun newsItem(news: News) {
-        content.append("### ${news.title}\n")
-        content.append("**Place:** ${news.place}\n")
-        content.append("**Description:** ${news.description}\n")
-        content.append("**URL:** [${news.siteUrl}](${news.siteUrl})\n")
-        content.append("**Favorites:** ${news.favoritesCount}, **Comments:** ${news.commentsCount}, **Rating:** ${news.rating}\n")
-        content.append("-----\n")
-    }
-
+fun newsItem(news: News) {
+    content.append("### ${news.title}\n")
+    content.append("-----\n")
+    
+    content.append("**Place:** ${news.place}\n")
+    content.append("-----\n")
+    
+    content.append("**Description:**\n")
+    content.append("${news.description}\n")
+    content.append("-----\n")
+    
+    content.append("**URL:** [${news.siteUrl}](${news.siteUrl})\n")
+    content.append("-----\n")
+    
+    content.append("**Favorites:** ${news.favoritesCount}\n")
+    content.append("**Comments:** ${news.commentsCount}\n")
+    content.append("**Rating:** ${news.rating}\n")
+    content.append("-----\n")
+}
     fun print() {
         println(content.toString())
     }
