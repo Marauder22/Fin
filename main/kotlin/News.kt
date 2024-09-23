@@ -2,7 +2,6 @@ import kotlinx.serialization.Serializable
 import java.time.LocalDate
 import kotlinx.serialization.Contextual
 
-
 @Serializable
 data class News(
     val id: Int,
@@ -14,7 +13,8 @@ data class News(
     val commentsCount: Int,
     @Contextual val publishedAt: LocalDate
 ) {
-
-    val rating: Double
-        get() = 1 / (1 + Math.exp(-(favoritesCount / (commentsCount + 1).toDouble())))
+    // Ленивое свойство для рейтинга
+    val rating: Double by lazy {
+        1 / (1 + Math.exp(-(favoritesCount / (commentsCount + 1).toDouble())))
+    }
 }
